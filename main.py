@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 #to get dynamic values
-import time
+import time2
 
 service = Service('C:\\Users\\Fabio\\Desktop\\Coding\\Python\\ScrapingTextSelenium\\driver\\chromedriver.exe')
 
