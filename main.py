@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
 #to get dynamic values
 import time
 
@@ -26,7 +27,14 @@ def clean_text(text):
 
 def main():
     driver = get_driver()
-    element = driver.find_element(by="id", value="id_username").send_keys("automated")
+    driver.find_element(by="id", value="id_username").send_keys("automated")
     time.sleep(2)
+    driver.find_element(by="id", value="id_password").send_keys("automatedautomated" + Keys.RETURN)
+    time.sleep(2)
+    print(driver.current_url)
+    time.sleep(2)
+    driver.find_element(by="xpath", value="/html/body/nav/div/a").click()
+    print(driver.current_url)   
+
 
 print(main())
