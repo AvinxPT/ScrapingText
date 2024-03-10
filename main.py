@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+#to get dynamic values
+import time
 
 service = Service('C:\\Users\\Fabio\\Desktop\\Coding\\Python\\ScrapingTextSelenium\\driver\\chromedriver.exe')
 
@@ -17,9 +19,16 @@ def get_driver():
     driver.get("http://automated.pythonanywhere.com/")
     return driver
 
+def clean_text(text):
+    """Extract only the temperature from quote"""
+    output = float(text.split(": ")[1])
+    return output
+
 def main():
     driver = get_driver()
-    element = driver.find_element(by="xpath", value="/html/body/div[1]/div/h1[1]")
-    return element.text
+    #use sleep to get info from the page
+    time.sleep(2)
+    element = driver.find_element(by="xpath", value="/html/body/div[1]/div/h1[2]")
+    return clean_text(element.text)
 
 print(main())
